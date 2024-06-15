@@ -19,7 +19,15 @@ transform = T.Compose([
 
 
 # TODO: Load dataset
-train_loader = ...
+val_loader = DataLoader(
+    VisualOdometryDataset(
+        "dataset/val",
+        transform=transform,
+        sequence_length=sequence_length
+    ),
+    batch_size=batch_size,
+    shuffle=True
+)
 
 
 # val
@@ -33,14 +41,19 @@ validation_string = ""
 position = [0.0] * 7
 
 with torch.no_grad():
-    for images, labels, timestamp in tqdm(train_loader, f"Validating:"):
+    for images, labels, timestamp in tqdm(val_loader, f"Validating:"):
 
         images = images.to(device)
         labels = labels.to(device)
 
-        target = model(images).cpu().numpy().tolist()[0]
+        target = model(images).cpu().numpy().tolist()
 
         # TODO: add the results into the validation_string
+        for i in range(7):
+            position[i] += target[i]
+
+        validation_string += f"{timestamp[0]} {position[0]} {position[1]} {position[2]} {position[3]} {position[4]} {position[5]} {position[6]}\n"
+
 
 
 f = open("validation.txt", "a")
