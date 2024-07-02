@@ -44,3 +44,72 @@ $ python3 val.py
 ## Results
 
 Put your results here showing the graphs got from [TUM online validation tool](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/online_evaluation).
+
+## Output 1
+
+# Parameters:
+    - LSTM
+    hidden_size = 128
+    num_layers = 3
+    bidirectional = True
+    lstm_dropout = 0.3
+
+    - dataset
+    sequence_length = 20
+    batch_size = 64
+
+    - train
+    learning_rate = 0.01
+    epochs = 2
+
+
+# -----------------------------------------------
+    compared_pose_pairs 773 pairs
+    translational_error.rmse 0.477766 m
+    translational_error.mean 0.399521 m
+    translational_error.median 0.362075 m
+    translational_error.std 0.261998 m
+    translational_error.min 0.021337 m
+    translational_error.max 1.106553 m
+    rotational_error.rmse 21.462463 deg
+    rotational_error.mean 18.863456 deg
+    rotational_error.median 0.293175 deg
+    rotational_error.std 10.237546 deg
+    rotational_error.min 0.890160 deg
+    rotational_error.max 40.497862 deg
+# -----------------------------------------------
+
+<img src="./output/1/validation_1.png" width="100%" />
+
+## Output 2
+    - LSTM
+    hidden_size = 64
+    num_layers = 3
+    bidirectional = False
+    lstm_dropout = 0.3
+
+    - dataset
+    sequence_length = 20
+    batch_size = 64
+
+    - train
+    learning_rate = 0.01
+    epochs = 2
+
+# -----------------------------------------------
+    compared_pose_pairs 773 pairs
+    translational_error.rmse 0.468637 m
+    translational_error.mean 0.385652 m
+    translational_error.median 0.336391 m
+    translational_error.std 0.266257 m
+    translational_error.min 0.012315 m
+    translational_error.max 1.152225 m
+    rotational_error.rmse 21.462463 deg
+    rotational_error.mean 18.863456 deg
+    rotational_error.median 0.293175 deg
+    rotational_error.std 10.237546 deg
+    rotational_error.min 0.890160 deg
+    rotational_error.max 40.497862 deg
+# -----------------------------------------------
+
+<img src="./output/2/validation_2.png" width="100%" />

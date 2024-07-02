@@ -49,11 +49,13 @@ with torch.no_grad():
         target = model(images).cpu().numpy().tolist()
 
         # TODO: add the results into the validation_string
-        for i in range(7):
-            position[i] += target[i]
+        model_output = model(images).cpu().numpy().tolist()
 
-        validation_string += f"{timestamp[0]} {position[0]} {position[1]} {position[2]} {position[3]} {position[4]} {position[5]} {position[6]}\n"
-
+        # Add the results into the validation_string
+        for timestamp, target in zip(timestamp, model_output):
+            position = [pos + delta for pos, delta in zip(position, target)]
+            position_str = ' '.join(map(str, position))
+            validation_string += f"{timestamp} {position_str}\n"
 
 
 f = open("validation.txt", "a")

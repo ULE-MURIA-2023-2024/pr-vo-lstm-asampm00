@@ -1,0 +1,28 @@
+# LSTM
+hidden_size = 64
+num_layers = 3
+bidirectional = False
+lstm_dropout = 0.3
+
+# dataset
+sequence_length = 20
+batch_size = 64
+
+# train
+learning_rate = 0.01
+epochs = 2
+
+# ---------
+compared_pose_pairs 773 pairs
+translational_error.rmse 0.468637 m
+translational_error.mean 0.385652 m
+translational_error.median 0.336391 m
+translational_error.std 0.266257 m
+translational_error.min 0.012315 m
+translational_error.max 1.152225 m
+rotational_error.rmse 21.462463 deg
+rotational_error.mean 18.863456 deg
+rotational_error.median 0.293175 deg
+rotational_error.std 10.237546 deg
+rotational_error.min 0.890160 deg
+rotational_error.max 40.497862 deg
